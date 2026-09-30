@@ -1,0 +1,14 @@
+name = "appshelf-publisher"
+main = "index.js"
+compatibility_date = "2026-09-30"
+
+[vars]
+GITHUB_OWNER = "YOUR_GITHUB_USERNAME"
+GITHUB_REPO = "YOUR_REPOSITORY_NAME"
+GITHUB_BRANCH = "main"
+PAGES_ORIGIN = "https://YOUR_GITHUB_USERNAME.github.io"
+
+# Set these using Wrangler secrets; never put them in this file:
+# npx wrangler secret put GITHUB_TOKEN
+# npx wrangler secret put ADMIN_PASSWORD
+# npx wrangler secret put SESSION_SECRET
