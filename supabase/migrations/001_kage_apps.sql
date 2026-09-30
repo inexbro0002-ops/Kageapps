@@ -95,6 +95,40 @@ create trigger on_auth_user_created
 after insert on auth.users
 for each row execute function public.handle_new_user();
 
+-- Backfill profiles for accounts created before this migration was applied.
+-- This also promotes existing allowlisted accounts such as inexbro0002@gmail.com.
+insert into public.profiles (id, username, email, role, created_at)
+select
+  u.id,
+  coalesce(
+    nullif(left(trim(coalesce(u.raw_user_meta_data ->> 'username', '')), 40), ''),
+    nullif(left(split_part(coalesce(u.email, 'user'), '@', 1), 40), ''),
+    'User'
+  ),
+  coalesce(u.email, ''),
+  case
+    when exists (
+      select 1
+      from public.admin_email_allowlist a
+      where a.email = lower(trim(coalesce(u.email, '')))
+    )
+    then 'admin'
+    else 'user'
+  end,
+  coalesce(u.created_at, now())
+from auth.users u
+on conflict (id) do update
+  set email = excluded.email,
+      role = case
+        when exists (
+          select 1
+          from public.admin_email_allowlist a
+          where a.email = lower(trim(excluded.email))
+        )
+        then 'admin'
+        else public.profiles.role
+      end;
+
 -- SECURITY DEFINER avoids recursive profile RLS checks. Only this database-owned
 -- function decides the role; client-side flags are never trusted.
 create or replace function public.is_admin()

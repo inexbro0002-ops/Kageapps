@@ -152,7 +152,7 @@
         return null;
       }
       if (document.body.dataset.requiresAdmin && user) {
-        const { data, error } = await client().from("profiles").select("role").eq("id", user.id).single();
+        const { data, error } = await client().from("profiles").select("role").eq("id", user.id).maybeSingle();
         if (error) {
           const status = $("[data-auth-status]");
           const missingSchema = error.code === "PGRST205" || /schema cache|does not exist/i.test(error.message || "");

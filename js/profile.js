@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const user = await auth.updateNavAndGuards();
     if (!user || !client) return;
     const [{ data: profile, error: profileError }, { data: downloads, error: downloadsError, count }] = await Promise.all([
-      client.from("profiles").select("id,username,email,avatar_url,created_at").eq("id", user.id).single(),
+      client.from("profiles").select("id,username,email,avatar_url,created_at").eq("id", user.id).maybeSingle(),
       client.from("app_downloads").select("app_id,app_name,downloaded_at", { count: "exact" }).eq("user_id", user.id).order("downloaded_at", { ascending: false }).limit(10)
     ]);
     if (profileError) throw profileError;
