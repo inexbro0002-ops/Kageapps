@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en" data-root="../">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f7f6fb">
+  <title>Users — Kage Apps Admin</title><link rel="stylesheet" href="../css/style.css">
+  <script defer src="../js/database.js"></script><script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script defer src="../js/supabase-config.js"></script><script defer src="../js/supabase.js"></script><script defer src="../js/auth.js"></script><script defer src="../js/admin-users.js"></script>
+</head>
+<body data-root="../" data-requires-admin="true">
+  <header class="site-header admin-site-header"><a class="brand" href="index.html"><span class="brand-mark">K</span><span>Kage Apps <span class="admin-word">Admin</span></span></a><div class="header-actions"><a class="button button-outline" href="index.html">Dashboard</a><a class="button button-outline" href="catalog.html">Edit catalog</a><button class="button button-outline" type="button" data-signout>Log out</button><button class="icon-button theme-toggle" type="button" aria-label="Switch color theme" title="Switch theme"><span class="theme-glyph">◐</span></button></div></header>
+  <main class="page-wrap admin-main"><div class="admin-page-heading"><div><p class="eyebrow">PRIVATE ADMIN AREA</p><h1>Users</h1><p class="auth-lead">Registered accounts and their download activity.</p></div><input id="user-search" class="admin-search-input" type="search" placeholder="Search users" aria-label="Search users"></div>
+    <div class="auth-message" data-auth-status role="status" hidden></div>
+    <section data-admin-content hidden><div class="profile-panel table-panel"><div class="table-scroll"><table class="users-table"><thead><tr><th>Username</th><th>Email</th><th>Registered</th><th>Downloads</th><th>Last activity</th></tr></thead><tbody id="admin-users-list"><tr><td colspan="5">Loading users…</td></tr></tbody></table></div><p id="users-summary" class="settings-footnote"></p></div></section>
+  </main>
+</body>
+</html>

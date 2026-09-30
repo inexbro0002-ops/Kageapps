@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" data-root="../">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f7f6fb">
+  <title>Manage apps — Kage Apps</title><link rel="stylesheet" href="../css/style.css">
+  <script defer src="../js/database.js"></script><script defer src="../js/data-loader.js"></script><script defer src="config.js"></script><script defer src="admin.js"></script>
+</head>
+<body class="admin-page">
+  <main class="admin-wrap">
+    <header class="admin-top"><a class="brand" href="../index.html"><span class="brand-mark">K</span><span>Kage Apps <span>/ Admin</span></span></a><div class="admin-top-actions"><a href="../index.html">View site ↗</a><button id="logout-button" type="button">Sign out</button></div></header>
+    <section class="admin-title"><div><h1>Manage your apps</h1><p>Add, edit, and publish your catalog. Changes stay as a local draft until you publish.</p></div><button id="new-app" class="button button-dark" type="button">＋ Add app</button></section>
+    <div id="admin-message" class="admin-banner info" hidden></div>
+    <div class="admin-grid">
+      <section class="admin-panel" aria-labelledby="form-title"><h2 id="form-title">Add an app</h2>
+        <form id="app-form" class="admin-form">
+          <input type="hidden" id="field-original-id">
+          <div class="form-field"><label for="field-name">App name *</label><input id="field-name" required maxlength="80" placeholder="e.g. Pocket Notes"></div>
+          <div class="form-field"><label for="field-id">App ID *</label><input id="field-id" required maxlength="80" pattern="[A-Za-z0-9_-]+" placeholder="pocket-notes"></div>
+          <div class="form-field full"><label for="field-short">Short description *</label><input id="field-short" required maxlength="150" placeholder="A helpful one-line summary"></div>
+          <div class="form-field full"><label for="field-description">Full description</label><textarea id="field-description" maxlength="3000" placeholder="What does the app do?"></textarea></div>
+          <div class="form-field"><label for="field-version">Version</label><input id="field-version" maxlength="40" placeholder="1.0.0"></div>
+          <div class="form-field"><label for="field-size">Size</label><input id="field-size" maxlength="40" placeholder="25 MB"></div>
+          <div class="form-field"><label for="field-category">Category *</label><input id="field-category" required maxlength="40" placeholder="Tools"></div>
+          <div class="form-field"><label for="field-updated">Last updated</label><input id="field-updated" type="date"></div>
+          <div class="form-field full"><label for="field-icon">Icon URL (HTTPS)</label><input id="field-icon" type="url" placeholder="https://example.com/icon.png"></div>
+          <div class="form-field full"><label for="field-download">Download URL (HTTPS)</label><input id="field-download" type="url" placeholder="https://example.com/app.apk"></div>
+          <div class="form-field full"><label for="field-website">Website URL (optional)</label><input id="field-website" type="url" placeholder="https://example.com"></div>
+          <label class="form-check full"><input id="field-featured" type="checkbox"> Show in featured apps</label>
+          <div class="admin-form-actions"><button class="button button-dark" type="submit" id="save-app">Save draft</button><button class="button button-outline" type="button" id="cancel-edit" hidden>Cancel edit</button></div>
+        </form>
+      </section>
+      <section class="admin-panel" aria-labelledby="list-title"><h2 id="list-title">Your app list</h2><input id="admin-search" class="admin-search" type="search" placeholder="Search your apps…" aria-label="Search apps"><div id="admin-app-list" class="admin-app-list"><p class="loading-card">Loading app list…</p></div>
+        <div class="admin-note">The sample entries are examples, not working downloads. Add your own valid HTTPS links, save the draft, then publish when your Worker is configured.</div>
+        <div class="publish-bar"><p>Publishing updates <code>database.js</code> and <code>version.js</code> in your GitHub repository in one commit.</p><button id="publish-button" class="button button-dark" type="button">Publish to GitHub <span aria-hidden="true">↗</span></button></div><p id="publish-status" class="status-line" role="status" aria-live="polite"></p>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
