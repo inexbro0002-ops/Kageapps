@@ -19,6 +19,12 @@
     } catch { return "index.html"; }
   }
   function signedInHref(user) { return user ? "profile.html" : "login.html"; }
+  function appUrl(path) {
+    const host = String(location.hostname || "").toLowerCase();
+    const isLocal = host === "localhost" || host === "127.0.0.1" || host === "[::1]";
+    const base = !isLocal && window.KAGE_SITE_URL ? window.KAGE_SITE_URL : location.href;
+    return new URL(path, base).href;
+  }
   function updateAccountLink(user) {
     document.querySelectorAll(".account-link").forEach((link) => {
       link.href = signedInHref(user);
@@ -101,7 +107,7 @@
       submit.disabled = true;
       showMessage(message, "Creating your account…");
       try {
-        const { data, error } = await client().auth.signUp({ email, password, options: { data: { username }, emailRedirectTo: new URL("login.html", location.href).href } });
+        const { data, error } = await client().auth.signUp({ email, password, options: { data: { username }, emailRedirectTo: appUrl("login.html") } });
         if (error) throw error;
         if (data.session) location.replace("profile.html");
         else showMessage(message, "Account created. Check your email to confirm it, then log in. Your profile is created securely when signup completes.", "success");
@@ -118,7 +124,7 @@
       const email = String(new FormData(form).get("email") || "").trim();
       const submit = $("[type=submit]", form); submit.disabled = true;
       try {
-        const { error } = await client().auth.resetPasswordForEmail(email, { redirectTo: new URL("settings.html?mode=reset", location.href).href });
+        const { error } = await client().auth.resetPasswordForEmail(email, { redirectTo: appUrl("settings.html?mode=reset") });
         if (error) throw error;
         showMessage(message, "If an account exists for that email, a password reset link has been sent.", "success");
       } catch (error) { showMessage(message, error.message || "Could not send the reset email.", "error"); }
