@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en" data-root="../">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f7f6fb">
+  <title>Admin sign in — Kage Apps</title><link rel="stylesheet" href="../css/style.css">
+  <script defer src="config.js"></script><script defer src="login.js"></script>
+</head>
+<body class="admin-page">
+  <main class="login-card">
+    <a class="brand" href="../index.html"><span class="brand-mark">K</span><span>Kage Apps</span></a>
+    <h1>Admin sign in</h1><p>Manage your app listings. Access is checked by your private publishing service.</p>
+    <div id="login-message" class="admin-banner info" hidden></div>
+    <form id="login-form"><div class="form-field"><label for="admin-password">Admin password</label><input id="admin-password" name="password" type="password" autocomplete="current-password" required minlength="10"></div><button class="button button-dark" type="submit">Sign in <span aria-hidden="true">→</span></button></form>
+    <p class="login-footnote">Your GitHub token is never entered here. The sign-in request goes to your configured HTTPS Worker, where the secret stays server-side.</p>
+    <p class="login-footnote"><a href="../index.html">← Back to Kage Apps</a></p>
+  </main>
+</body>
+</html>
