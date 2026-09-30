@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en" data-root="./">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f7f6fb">
+  <meta name="description" content="Create a Kage Apps account.">
+  <title>Create account — Kage Apps</title><link rel="stylesheet" href="css/style.css">
+  <script defer src="js/database.js"></script><script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script defer src="js/supabase-config.js"></script><script defer src="js/supabase.js"></script><script defer src="js/auth.js"></script>
+</head>
+<body data-auth-page="register">
+  <main class="auth-shell"><div class="auth-topbar"><a class="brand auth-brand" href="index.html"><span class="brand-mark">K</span><span>Kage Apps</span></a><button class="icon-button theme-toggle" type="button" aria-label="Switch color theme" title="Switch theme"><span class="theme-glyph">◐</span></button></div>
+    <section class="auth-card"><p class="eyebrow">JOIN THE COLLECTION</p><h1>Create account</h1><p class="auth-lead">Save your download history and manage your profile.</p>
+      <div class="auth-message" data-auth-status hidden></div>
+      <form data-auth-form="register" novalidate>
+        <div class="auth-message" data-form-message role="status" hidden></div>
+        <div class="form-field"><label for="register-username">Username</label><input id="register-username" type="text" name="username" autocomplete="nickname" required minlength="1" maxlength="40"></div>
+        <div class="form-field"><label for="register-email">Email</label><input id="register-email" type="email" name="email" autocomplete="email" required></div>
+        <div class="form-field"><label for="register-password">Password</label><input id="register-password" type="password" name="password" autocomplete="new-password" required minlength="8"><small>At least 8 characters.</small></div>
+        <div class="form-field"><label for="register-confirm">Confirm password</label><input id="register-confirm" type="password" name="confirm-password" autocomplete="new-password" required minlength="8"></div>
+        <button class="button button-dark" type="submit">Create account <span aria-hidden="true">→</span></button>
+        <p class="auth-switch">Already have an account? <a href="login.html">Log in</a></p>
+      </form>
+    </section><a class="auth-back" href="index.html">← Back to apps</a>
+  </main>
+</body>
+</html>

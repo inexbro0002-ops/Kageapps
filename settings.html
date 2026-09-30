@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="en" data-root="./">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f7f6fb">
+  <title>Account settings — Kage Apps</title><link rel="stylesheet" href="css/style.css">
+  <script defer src="js/database.js"></script><script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script defer src="js/supabase-config.js"></script><script defer src="js/supabase.js"></script><script defer src="js/auth.js"></script><script defer src="js/settings.js"></script>
+</head>
+<body data-root="./">
+  <header class="site-header"><a class="brand" href="index.html"><span class="brand-mark">K</span><span>Kage Apps</span></a><div class="header-actions"><a class="button button-outline" href="profile.html">← Profile</a><button class="button button-outline" type="button" data-signout>Log out</button><button class="icon-button theme-toggle" type="button" aria-label="Switch color theme" title="Switch theme"><span class="theme-glyph">◐</span></button></div></header>
+  <main class="page-wrap settings-main"><p class="eyebrow">ACCOUNT SECURITY</p><h1 id="settings-title">Account settings</h1><p class="auth-lead" id="settings-lead">Update your password or account security settings.</p><section class="profile-panel settings-panel"><div class="auth-message" data-auth-status hidden></div><div class="auth-message" data-form-message hidden></div><form id="password-form" hidden><div class="form-field"><label for="new-password">New password</label><input id="new-password" name="password" type="password" autocomplete="new-password" required minlength="8"></div><div class="form-field"><label for="confirm-new-password">Confirm new password</label><input id="confirm-new-password" name="confirm-password" type="password" autocomplete="new-password" required minlength="8"></div><button class="button button-dark" type="submit">Save new password</button></form><p id="settings-redirect" class="settings-footnote" hidden>Redirecting to log in…</p></section></main>
+</body>
+</html>

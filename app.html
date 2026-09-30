@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en" data-root="./">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f7f6fb">
+  <title>App details — Kage Apps</title><link rel="stylesheet" href="css/style.css">
+  <script defer src="js/database.js"></script><script defer src="js/data-loader.js"></script><script defer src="js/app.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script defer src="js/supabase-config.js"></script><script defer src="js/supabase.js"></script><script defer src="js/auth.js"></script>
+</head>
+<body>
+  <header class="site-header"><a class="brand" href="index.html"><span class="brand-mark">K</span><span>Kage Apps</span></a><nav class="main-nav" aria-label="Main navigation"><a class="nav-link" href="index.html">Discover</a><a class="nav-link" href="search.html">All apps</a></nav><div class="header-actions"><form class="header-search" action="search.html" role="search"><span aria-hidden="true">⌕</span><input name="q" type="search" placeholder="Search apps" aria-label="Search apps"><kbd>/</kbd></form><a class="icon-button account-link" href="login.html" aria-label="Log in" title="Log in">↗</a><button class="icon-button theme-toggle" type="button" aria-label="Switch color theme"><span class="theme-glyph">◐</span></button></div></header>
+  <main class="page-wrap detail-main"><a class="back-link" href="javascript:history.back()">← <span>Back to apps</span></a><div id="app-detail" class="detail-shell"><div class="loading-card">Loading app details…</div></div></main>
+  <footer class="site-footer"><div class="page-wrap footer-inner"><a class="brand footer-brand" href="index.html"><span class="brand-mark">K</span><span>Kage Apps</span></a><p>Apps, without the noise.</p><a href="admin/login.html" class="footer-admin" data-admin-link hidden>Admin</a><span class="footer-copy">© <span id="year"></span> Kage Apps</span></div></footer>
+</body>
+</html>

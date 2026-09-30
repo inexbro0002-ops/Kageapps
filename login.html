@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en" data-root="./">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f7f6fb">
+  <meta name="description" content="Sign in to Kage Apps to keep your app download history.">
+  <title>Log in — Kage Apps</title><link rel="stylesheet" href="css/style.css">
+  <script defer src="js/database.js"></script><script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script defer src="js/supabase-config.js"></script><script defer src="js/supabase.js"></script><script defer src="js/auth.js"></script>
+</head>
+<body data-auth-page="login">
+  <main class="auth-shell"><div class="auth-topbar"><a class="brand auth-brand" href="index.html"><span class="brand-mark">K</span><span>Kage Apps</span></a><button class="icon-button theme-toggle" type="button" aria-label="Switch color theme" title="Switch theme"><span class="theme-glyph">◐</span></button></div>
+    <section class="auth-card"><p class="eyebrow">WELCOME BACK</p><h1 id="auth-title">Log in</h1><p class="auth-lead" id="auth-lead">Sign in to download apps and keep your history in one place.</p>
+      <div class="auth-message" data-auth-status hidden></div>
+      <form data-auth-form="login" id="login-form" novalidate>
+        <div class="auth-message" data-form-message role="status" hidden></div>
+        <div class="form-field"><label for="login-email">Email</label><input id="login-email" type="email" name="email" autocomplete="email" required></div>
+        <div class="form-field"><label for="login-password">Password</label><input id="login-password" type="password" name="password" autocomplete="current-password" required></div>
+        <label class="form-check remember-check"><input type="checkbox" name="remember" checked><span>Remember this device</span></label>
+        <button class="button button-dark" type="submit">Log in <span aria-hidden="true">→</span></button>
+        <div class="auth-links"><a href="login.html?mode=recovery" data-show-recovery>Forgot password?</a><a href="register.html">Create account</a></div>
+      </form>
+      <form data-auth-form="recovery" id="recovery-form" hidden novalidate>
+        <div class="auth-message" data-form-message role="status" hidden></div>
+        <div class="form-field"><label for="recovery-email">Email</label><input id="recovery-email" type="email" name="email" autocomplete="email" required></div>
+        <button class="button button-dark" type="submit">Send reset link</button>
+        <div class="auth-links"><a href="login.html" data-show-login>Back to log in</a><a href="register.html">Create account</a></div>
+      </form>
+    </section><a class="auth-back" href="index.html">← Back to apps</a>
+  </main>
+</body>
+</html>
