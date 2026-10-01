@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f7f6fb">
   <title>Manage apps — Kage Apps</title><link rel="stylesheet" href="../css/style.css">
-  <script defer src="../js/database.js"></script><script defer src="../js/data-loader.js"></script><script defer src="config.js"></script><script defer src="admin.js"></script>
+  <script defer src="../js/database.js"></script><script defer src="../js/data-loader.js"></script><script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script defer src="../js/supabase-config.js"></script><script defer src="../js/supabase.js"></script><script defer src="../js/auth.js"></script><script defer src="config.js"></script><script defer src="admin.js"></script>
 </head>
-<body class="admin-page">
+<body class="admin-page" data-root="../" data-requires-admin="true">
   <main class="admin-wrap">
     <header class="admin-top"><a class="brand" href="../index.html"><span class="brand-mark">K</span><span>Kage Apps <span>/ Admin</span></span></a><div class="admin-top-actions"><a href="../index.html">View site ↗</a><button id="logout-button" type="button">Sign out</button></div></header>
     <section class="admin-title"><div><h1>Manage your apps</h1><p>Add, edit, and publish your catalog. Changes stay as a local draft until you publish.</p></div><button id="new-app" class="button button-dark" type="button">＋ Add app</button></section>

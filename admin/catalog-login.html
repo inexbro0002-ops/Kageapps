@@ -2,17 +2,15 @@
 <html lang="en" data-root="../">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f7f6fb">
-  <title>Admin sign in — Kage Apps</title><link rel="stylesheet" href="../css/style.css">
-  <script defer src="config.js"></script><script defer src="login.js"></script>
+  <title>Catalog editor sign in — Kage Apps</title><link rel="stylesheet" href="../css/style.css">
+  <script defer src="../js/database.js"></script><script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script defer src="../js/supabase-config.js"></script><script defer src="../js/supabase.js"></script><script defer src="../js/auth.js"></script>
 </head>
-<body class="admin-page">
-  <main class="login-card">
-    <a class="brand" href="../index.html"><span class="brand-mark">K</span><span>Kage Apps</span></a>
-    <h1>Admin sign in</h1><p>Manage your app listings. Access is checked by your private publishing service.</p>
-    <div id="login-message" class="admin-banner info" hidden></div>
-    <form id="login-form"><div class="form-field"><label for="admin-password">Admin password</label><input id="admin-password" name="password" type="password" autocomplete="current-password" required minlength="10"></div><button class="button button-dark" type="submit">Sign in <span aria-hidden="true">→</span></button></form>
-    <p class="login-footnote">Your GitHub token is never entered here. The sign-in request goes to your configured HTTPS Worker, where the secret stays server-side.</p>
-    <p class="login-footnote"><a href="../index.html">← Back to Kage Apps</a></p>
+<body data-root="../" data-auth-page="login" data-default-next="admin/catalog.html">
+  <main class="auth-shell"><div class="auth-topbar"><a class="brand auth-brand" href="../index.html"><span class="brand-mark">K</span><span>Kage Apps</span></a><button class="icon-button theme-toggle" type="button" aria-label="Switch color theme" title="Switch theme"><span class="theme-glyph">◐</span></button></div>
+    <section class="auth-card"><p class="eyebrow">AUTHORIZED ACCESS</p><h1 id="auth-title">Catalog editor sign in</h1><p class="auth-lead" id="auth-lead">Sign in with your Supabase administrator account.</p><div class="auth-message" data-auth-status hidden></div>
+      <form data-auth-form="login" id="login-form" novalidate><div class="auth-message" data-form-message role="status" hidden></div><div class="form-field"><label for="admin-email">Email</label><input id="admin-email" type="email" name="email" autocomplete="email" required></div><div class="form-field"><label for="admin-password">Password</label><input id="admin-password" type="password" name="password" autocomplete="current-password" required></div><label class="form-check remember-check"><input type="checkbox" name="remember" checked><span>Remember this device</span></label><button class="button button-dark" type="submit">Sign in <span aria-hidden="true">→</span></button><div class="auth-links"><a href="../login.html?mode=recovery">Forgot password?</a><a href="../index.html">Back to apps</a></div></form>
+      <p class="auth-switch">Dashboard: <a href="index.html">Open admin dashboard</a></p>
+    </section><a class="auth-back" href="../index.html">← Back to apps</a>
   </main>
 </body>
 </html>
