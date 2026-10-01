@@ -23,10 +23,32 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
     summary.textContent = `${filtered.length} of ${rows.length} users`;
   };
+  async function loadUsers() {
+    const rpc = await client.rpc("admin_user_activity");
+    if (!rpc.error && Array.isArray(rpc.data) && rpc.data.length) return rpc.data;
+
+    // Fallback for projects where the RPC migration was not re-run yet.
+    const [profilesResult, downloadsResult] = await Promise.all([
+      client.from("profiles").select("id,username,email,created_at" ).order("created_at", { ascending: false }),
+      client.from("app_downloads").select("user_id,downloaded_at")
+    ]);
+    if (profilesResult.error) throw profilesResult.error;
+    if (downloadsResult.error) throw downloadsResult.error;
+    const stats = new Map();
+    for (const row of downloadsResult.data || []) {
+      const current = stats.get(row.user_id) || { count: 0, last: null };
+      current.count += 1;
+      if (!current.last || new Date(row.downloaded_at) > new Date(current.last)) current.last = row.downloaded_at;
+      stats.set(row.user_id, current);
+    }
+    return (profilesResult.data || []).map((row) => ({
+      ...row,
+      download_count: stats.get(row.id)?.count || 0,
+      last_activity: stats.get(row.id)?.last || null
+    }));
+  }
   try {
-    const { data, error } = await client.rpc("admin_user_activity");
-    if (error) throw error;
-    const rows = data || [];
+    const rows = await loadUsers();
     render(rows);
     search.addEventListener("input", () => render(rows));
   } catch (error) {
